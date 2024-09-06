@@ -420,7 +420,7 @@
             if (obj && [obj isKindOfClass:[UIView class]]) {
                 UIView *selectRowView = (UIView *)obj;
                 // 中间选中行的圆角
-                selectRowView.layer.cornerRadius = self.selectRowCornerRadius
+                selectRowView.layer.cornerRadius = self.selectRowCornerRadius;
             }
         }
     }
