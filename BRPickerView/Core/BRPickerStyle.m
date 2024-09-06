@@ -401,6 +401,30 @@
         }
     }
     
+    if (self.selectRowCornerRadius > 0) {
+        UIView *columnView = nil;
+        if (contentView) {
+            id obj = [contentView valueForKey:@"subviewCache"];
+            if (obj && [obj isKindOfClass:[NSArray class]]) {
+                NSArray *columnViews = (NSArray *)obj;
+                if (columnViews.count > 0) {
+                    id columnObj = columnViews.firstObject;
+                    if (columnObj && [columnObj isKindOfClass:[UIView class]]) {
+                        columnView = (UIView *)columnObj;
+                    }
+                }
+            }
+        }
+        if (columnView) {
+            id obj = [columnView valueForKey:@"middleContainerView"];
+            if (obj && [obj isKindOfClass:[UIView class]]) {
+                UIView *selectRowView = (UIView *)obj;
+                // 中间选中行的圆角
+                selectRowView.layer.cornerRadius = self.selectRowCornerRadius
+            }
+        }
+    }
+    
     if (contentView && self.clearPickerNewStyle) {
         if (systemVersion.doubleValue >= 14.0) {
             // ①隐藏中间选择行的背景样式
